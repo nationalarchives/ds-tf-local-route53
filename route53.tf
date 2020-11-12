@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 # Private zone
 # ------------------------------------------------------------------------------
-resource "aws_route53_zone" "dev" {
+resource "aws_route53_zone" "private_zone" {
   name = "${var.environment}.local"
   vpc {
     vpc_id = var.vpc_id
