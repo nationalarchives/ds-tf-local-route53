@@ -3,8 +3,12 @@
 # ------------------------------------------------------------------------------
 resource "aws_route53_zone" "private_zone" {
     name = "${var.environment}.local"
-    vpc {
-        vpc_id = var.vpc_id
+
+    dynamic "vpc" {
+        for_each = var.vpc_ids
+        content {
+            vpc_id = vpc.value
+        }
     }
 
     tags = {
